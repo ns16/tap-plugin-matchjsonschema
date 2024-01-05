@@ -1,0 +1,88 @@
+{
+  "name": "tap-plugin-matchjsonschema",
+  "version": "0.0.0-0",
+  "description": "",
+  "type": "module",
+  "keywords": [
+    "tapjs plugin"
+  ],
+  "tshy": {
+    "exports": {
+      "./package.json": "./package.json",
+      ".": "./src/index.ts",
+      "./import": "./src/import.mts",
+      "./loader": "./src/legacy-loader.mts"
+    }
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/commonjs/index.d.ts",
+        "default": "./dist/commonjs/index.js"
+      }
+    },
+    "./import": {
+      "import": {
+        "types": "./dist/esm/import.d.mts",
+        "default": "./dist/esm/import.mjs"
+      }
+    },
+    "./loader": {
+      "import": {
+        "types": "./dist/esm/legacy-loader.d.mts",
+        "default": "./dist/esm/legacy-loader.mjs"
+      }
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "license": "BlueOak-1.0.0",
+  "scripts": {
+    "preversion": "npm test",
+    "postversion": "npm publish",
+    "prepublishOnly": "git push origin --follow-tags",
+    "prepare": "tshy",
+    "pretest": "npm run prepare",
+    "presnap": "npm run prepare",
+    "test": "tap",
+    "snap": "tap",
+    "format": "prettier --write . --loglevel warn",
+    "typedoc": "typedoc --tsconfig .tshy/esm.json ./src/*.ts ./src/*.mts"
+  },
+  "tap": {
+    "typecheck": false
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 75,
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "jsxSingleQuote": false,
+    "bracketSameLine": true,
+    "arrowParens": "avoid",
+    "endOfLine": "lf"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "prettier": "^2.8.7",
+    "sync-content": "^1.0.2",
+    "ts-node": "github:TypeStrong/ts-node#8f6f4e5",
+    "typedoc": "^0.24.8",
+    "typescript": "^5.1.3"
+  },
+  "engines": {
+    "node": "16 >=16.17.0 || 18 >= 18.6.0 || >=20"
+  },
+  "peerDependencies": {
+    "@tapjs/core": "^1.4.6"
+  },
+  "main": "./dist/commonjs/index.js",
+  "types": "./dist/commonjs/index.d.ts"
+}
