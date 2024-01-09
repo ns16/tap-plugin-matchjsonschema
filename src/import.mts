@@ -39,7 +39,7 @@ import { register } from 'node:module'
 // which is defined in ./hooks.mts
 //@ts-ignore
 register(String(new URL('./loader.mjs', import.meta.url)), {
-  parentURL: import.meta.url,
+  parentURL: import.meta.url
   // to communicate with loader thread, pass MessagePort as shown
   // in the comment above.
 })

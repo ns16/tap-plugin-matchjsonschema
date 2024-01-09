@@ -1,3 +1,4 @@
 .idea
+.tap
 dist
 node_modules
